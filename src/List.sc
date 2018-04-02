@@ -69,3 +69,13 @@ def myFoldLeft(list: List[String]): List[(String, Int)] = {
   ).reverse
 }
 
+case class MyList[T](elements:T)
+def map[A,B](f:(A)=>B)(myList: MyList[A]):MyList[B] = {
+  MyList(f(myList.elements))
+}
+
+val intMyList = MyList(1)
+val intToStringMapping = (a:Int)=> s"""--- $a ---"""
+val mapped = map(intToStringMapping)(intMyList)
+
+
